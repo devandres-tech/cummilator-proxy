@@ -7,7 +7,7 @@ var axios = require('axios')
 app.use(cors())
 
 app.get('/', (req, res, next) => {
-  res.send({ message: 'proxy server running' })
+  return res.send({ message: 'proxy server running' })
 })
 
 // app.use(
@@ -31,7 +31,7 @@ app.get('/getmakes', (req, res, next) => {
       return res.send(response.data)
     })
     .catch(function (error) {
-      console.log(error)
+      return res.send(error)
     })
 })
 
