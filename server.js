@@ -6,14 +6,11 @@ var axios = require('axios')
 
 app.use(cors())
 
+const PORT = process.env.PORT || 8080
+
 app.get('/', (req, res, next) => {
   return res.send({ message: 'proxy server running' })
 })
-
-// app.use(
-//   '/getmakes',
-//   proxy('https://www.gasbuddy.com/tripcostcalculator/getmakes')
-// )
 
 app.get('/getmakes', (req, res, next) => {
   var config = {
@@ -35,6 +32,6 @@ app.get('/getmakes', (req, res, next) => {
     })
 })
 
-app.listen(8000, function () {
+app.listen(PORT, function () {
   console.log('CORS-enabled web server listening on port 80')
 })
