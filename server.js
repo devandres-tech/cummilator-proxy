@@ -6,6 +6,10 @@ var axios = require('axios')
 
 app.use(cors())
 
+app.get('/', (req, res, next) => {
+  res.send({ message: 'proxy server running' })
+})
+
 // app.use(
 //   '/getmakes',
 //   proxy('https://www.gasbuddy.com/tripcostcalculator/getmakes')
