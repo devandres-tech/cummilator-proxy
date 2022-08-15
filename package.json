@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -q server.js"
   },
   "author": "andres alcocer",
   "license": "ISC",
@@ -12,9 +13,13 @@
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "express-http-proxy": "^1.6.3"
+    "express-http-proxy": "^1.6.3",
+    "lodash.round": "^4.0.4"
   },
   "engines": {
     "node": "18"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
