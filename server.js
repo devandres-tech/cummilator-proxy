@@ -13,7 +13,7 @@ app.get('/', (req, res, next) => {
 })
 
 app.get('/getmakes', (req, res, next) => {
-  var config = {
+  const config = {
     method: 'get',
     url: 'https://www.gasbuddy.com/tripcostcalculator/getmakes',
     headers: {
@@ -32,6 +32,35 @@ app.get('/getmakes', (req, res, next) => {
     })
 })
 
+app.get('/getvehiclemodels', (req, res, next) => {
+  const { year, makeid } = req.query
+  if (!year && !makeid) {
+    return res.status(404).send({
+      message: 'Error, you need to provide year and makeid query params',
+    })
+  }
+
+  const config = {
+    method: 'get',
+    url: `https://www.gasbuddy.com/tripcostcalculator/getvehiclemodels?year=${year}&makeid=${makeid}`,
+    headers: {
+      authority: 'www.gasbuddy.com',
+      accept:
+        'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+      'accept-language': 'en-US,en;q=0.9,es-MX;q=0.8,es;q=0.7,la;q=0.6',
+      'cache-control': 'max-age=0',
+    },
+  }
+
+  axios(config)
+    .then(function (response) {
+      return res.status(200).send(response.data)
+    })
+    .catch(function (error) {
+      return res.send(error)
+    })
+})
+
 app.listen(PORT, function () {
-  console.log('CORS-enabled web server listening on port 80')
+  console.log(`CORS-enabled web server listening on port ${PORT}`)
 })
